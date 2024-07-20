@@ -1,0 +1,121 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #2c3e50;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo img {
+    height: 50px; /* Adjust the height as needed */
+}
+
+header h1 {
+    font-size: 2rem;
+    margin: 0;
+    margin-right: 13rem;
+    flex-grow: 1;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bolder;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+nav ul li a.active {
+    background-color: #0a0222;
+    color: white;
+    border-radius: 5px;
+}
+
+main {
+    padding-top: 100px; /* Adjust to ensure content is not hidden behind the fixed header */
+    padding: 20px;
+}
+
+.missing-persons {
+    text-align: center;
+    margin-top: 9rem;
+}
+
+.missing-persons h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.persons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.person-card {
+    background: white;
+    border: 1px solid #7782a3;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    text-align: left;
+    width: 300px;
+    transition: transform 0.3s;
+}
+
+.person-card:hover {
+    transform: translateY(-10px);
+}
+
+.person-card img {
+    max-width: 90%;
+    max-height: 90%;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border-radius: 5px;
+}
+
+.person-details {
+    margin-top: 10px;
+    color: #193857;
+}
+
+.footer {
+    background: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+    
+}

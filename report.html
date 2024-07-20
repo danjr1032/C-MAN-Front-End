@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Report</title>
+    <link rel="stylesheet" href="./Styles/report.css">
+</head>
+<body>
+    <div class="container">
+        <form class="report-form">
+            <h2>REPORT</h2>
+            <select required>
+                <option value="" disabled selected>Select Crime Type</option>
+                <option value="Robbery">Robbery</option>
+                <option value="Murder">Murder</option>
+                <option value="Sexual Assault">Sexual Assault</option>
+                <option value="Cybercrime">Cybercrime</option>
+                <option value="Kidnapping">Kidnapping</option>
+            </select>
+            <input type="text" placeholder="location" required>
+            <textarea placeholder="Description" required></textarea>
+            <input type="file" accept="image/*" required>
+            <button type="submit">Submit Report</button>
+        </form>
+    </div>
+</body>
+</html>

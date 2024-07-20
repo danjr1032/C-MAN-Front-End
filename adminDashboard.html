@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="./Styles/adminDashboard.css">
+    <script defer src="./Scripts/adminDashboard.js"></script>
+    <!-- <script defer src="./Scripts/text.js"></script> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Catamaran:wght@400;800&family=Caveat:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/38fffd56eb.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://kit.fontawesome.com/4e247dda8f.js" crossorigin="anonymous"></script>
+    <!-- <script src="./Scripts/addNews.js"></script> -->
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo-container">
+            <img src="/images/cuffLogo.png" alt="logo" class="logo">
+        </div>
+        <h2>Admin Dashboard</h2>
+        <ul>
+            <li><a href="#" id="view-complaints"><i class="fa-solid fa-list-check"></i>   View Complaints</a></li>
+            <li><a href="#" id="add-police"><i class="fa-solid fa-user"></i>   Add Police</a></li>
+            <li><a href="#" id="view-police"><i class="fa-solid fa-address-book"></i>  View Police</a></li>
+            <li><a href="#" id="add-news"><i class="fa-solid fa-list-check"></i>    Add News</a></li>
+            <li><a href="#" id="view-users"><i class="fa-solid fa-address-book"></i>   View Users</a></li>
+            <li><a href="#" id="view-feedbacks"><i class="fa-solid fa-list-check"></i>    View Feedbacks</a></li>
+            <li><a href="#" id="logout" class="logout"><i class="fa-solid fa-person-walking-arrow-right"></i>  Logout</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="default section active">
+            <h2>Welcome to your Dashboard!</h2>
+            <div class="stats-cards">
+                <div class="card">
+                    <h3>Total Reports</h3>
+                    <p id="total-complaints">0</p>
+                </div>
+                <div class="card">
+                    <h3>Total Police</h3>
+                    <p id="total-police">0</p>
+                </div>
+                <div class="card">
+                    <h3>Total Users</h3>
+                    <p id="total-users">0</p>
+                </div>
+                <div class="card">
+                    <h3>Total Feedbacks</h3>
+                    <p id="total-feedbacks">0</p>
+                </div>
+            </div>
+            <!-- <div class="slider">
+                <img src="/images/safety1.png" alt="Slide 1" class="active">
+                <img src="/images/plc.jpg" alt="Slide 2">
+                <img src="/images/scene.jpeg" alt="Slide 3">
+            </div> -->
+        </div>
+        <div id="complaints-section" class="section" style="display: none;">
+            <h2>Complaints</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Crime</th>
+                        <th>Location</th>
+                        <th>Evidence</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="complaints-table">
+                    <!-- Complaints will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+        <div id="add-police-section" class="section" style="display: none;">
+            <h2>Add Police</h2>
+            <form id="add-police-form" enctype="multipart/form-data">
+                <input type="text" name="fullname" placeholder="Full Name" required>
+                <input type="tel" name="phone" placeholder="Phone" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="text" name="rank" placeholder="Rank" required>
+                <input type="text" name="bloodGroup" placeholder="Blood Group" required>
+                <input type="date" name="DOB" placeholder="Date of Birth" required>
+                <input type="text" name="nextOfKin" placeholder="Next of Kin" required>
+                <input type="text" name="badgeNumber" placeholder="Badge Number" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="file" name="image" accept="image/*" required>
+                <button type="submit">Add Police</button>
+              </form>
+        </div>
+        <div id="view-police-section" class="section" style="display: none;">
+            <h2>View Police</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Full Name</th>
+                        <th>Image</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Badge Number</th>
+                        <th>Rank</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="police-table">
+                    <!-- Police officers will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+        <div id="add-news-section" class="section" style="display: none;">
+            <h2>Add News</h2>
+            <form id="add-news-form">
+                <input type="text" id="headline" name="headline" placeholder="Headline" required>
+                <input type="file" id="image" name="image" accept="image/*" required>
+                <textarea id="content" name="content" placeholder="Content" required></textarea>
+                <button type="submit">Add News</button>
+            </form>
+        </div>
+        <div id="view-users-section" class="section" style="display: none;">
+            <h2>Users</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Full Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Street</th>
+                        <th>State</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="users-table">
+                    <!-- Users will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+        <div id="view-feedbacks-section" class="section" style="display: none;">
+            <h2>Feedbacks</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>FeedbackID</th>
+                        <th>Fullname</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="feedbacks-table">
+                    <!-- Feedbacks will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    background-image: url('/images/cuffs.webp'); /* Specify the path to your background image */
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    max-width: 500px;
+    height: 400px;
+    width: 100%;
+    padding: 20px;
+    color: #0a0222;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.report-form {
+    text-align: center;
+}
+
+.report-form h2 {
+    margin-bottom: 20px;
+    color: #0a0222;
+}
+
+.report-form input,
+.report-form textarea,
+.report-form select {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.report-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0a0222;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.report-form button:hover {
+    background-color: #555;
+}

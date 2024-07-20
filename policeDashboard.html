@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Dashboard</title>
+    <link rel="stylesheet" href="./Styles/policeDashboard.css">
+    <script defer src="./Scripts/policeDashboard.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@400;800&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <script src="https://kit.fontawesome.com/38fffd56eb.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="/images/cuffLogo.png" alt="logo" class="logo">
+        </div>
+        <h2>POLICE DASHBOARD</h2>
+        <ul>
+            <li><a href="#" id="view-complaints"><i class="fa-solid fa-list-check"></i>  View Complaints</a></li>
+            <li><a href="#" id="add-missing-person"><i class="fa-solid fa-pen-to-square"></i>  Add Missing Person</a></li>
+            <li><a href="#" id="view-missing-persons"><i class="fa-solid fa-list-check"></i>  View Missing Person</a></li>
+            <li><a href="#" id="add-criminal"><i class="fa-solid fa-user-plus"></i>  Add Criminal</a></li>
+            <li><a href="#" id="view-criminals"><i class="fa-solid fa-list-check"></i>  View Criminals</a></li>
+            <li><a href="#" id="logout" class="logout"><i class="fa-solid fa-person-walking-arrow-right"></i>  Logout</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="default section active">
+            <h1>Welcome to your Dashboard!</h1>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Total Crimes</h3>
+                    <p id="total-crime">0</p>
+                </div>
+                <div class="card">
+                    <h3>Total Criminals</h3>
+                    <p id="total-criminal">0</p>
+                </div>
+                <div class="card">
+                    <h3>Total Missing Persons</h3>
+                    <p id="total-missing-persons">0</p>
+                </div>
+            </div>
+        </div>
+        <div id="view-complaints-section" class="section">
+            <h1>Complaints</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Crime</th>
+                        <th>Location</th>
+                        <th>Description</th>
+                        <th>Evidence</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="complaints-table">
+                    <!-- Complaints will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+        <div id="add-missing-person-section" class="section">
+            <h1>Add Missing Person</h1>
+            <form id="add-missing-person-form" action="javascript:void(0);">
+                <input type="text" id="fullname" placeholder="FullName" required>
+                <input type="text" id="gender" placeholder="Gender Initail should be in Caps lock" required>
+                <input type="number" id="age" placeholder="Age" required>
+                <textarea id="description" placeholder="Description" required></textarea>
+                <input type="file" id="image" accept="image/*" required>
+                <button type="submit">Add Missing Person</button>
+            </form>
+        </div>
+        <div id="view-missing-persons-section" class="section">
+            <h1>View Missing Persons</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>Fullname</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody id="missing-persons-table">
+                    <!-- Missing persons will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+        <div id="add-criminal-section" class="section">
+            <h1>Add Criminal</h1>
+            <form id="add-criminal-form" action="http://localhost:7000/police/addCriminal" method="post">
+                <input type="file" id="image" name="image" accept="image/*" placeholder="Image" required>
+                <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+                <input type="date" id="DOB" name="DOB" placeholder="Date of Birth" required>
+                <input type="text" id="gender" name="gender" placeholder="Gender" required>
+                <input type="text" id="occupation" name="occupation" placeholder="Occupation" required>
+                
+                <!-- Marital Status dropdown -->
+                <select id="maritalStatus" name="maritalStatus" required>
+                    <option value="">Select Marital Status</option>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced">Divorced</option>
+                </select>
+                
+                <input type="number" id="weight" name="weight" placeholder="Weight (kg)" required>
+                <input type="number" id="height" name="height" placeholder="Height (cm)" required>
+                <input type="text" id="bloodGroup" name="bloodGroup" placeholder="Blood Group" required>
+                <input type="text" id="eyeColor" name="eyeColor" placeholder="Eye Color" required>
+                <input type="text" id="address" name="address" placeholder="Address" required>
+                <input type="text" id="localGovernment" name="localGovernment" placeholder="Local Government" required>
+                <input type="text" id="state" name="state" placeholder="State" required>
+                <input type="text" id="nationality" name="nationality" placeholder="Nationality" required>
+                
+                <!-- Crime dropdown -->
+                <select id="crime" name="crime" required>
+                    <option value="">Select Crime</option>
+                    <option value="Robbery">Robbery</option>
+                    <option value="Murder">Murder</option>
+                    <option value="Sexual Assault">Sexual Assault</option>
+                    <option value="Cybercrime">Cybercrime</option>
+                    <option value="Kidnapping">Kidnapping</option>
+                </select>
+                
+                <input type="text" id="contactFullname" name="contactFullname" placeholder="Contact Full Name" required>
+                <input type="tel" id="contactNumber" name="contactNumber" placeholder="Contact Number" required>
+                <input type="text" id="contactAddress" name="contactAddress" placeholder="Contact Address" required>
+                <input type="text" id="contactRelationship" name="contactRelationship" placeholder="Contact Relationship" required>
+                <input type="date" id="dateCommitted" name="dateCommitted" placeholder="Date Committed" required>
+                <input type="date" id="dateConvicted" name="dateConvicted" placeholder="Date Convicted" required>
+                <textarea id="sentence" name="sentence" placeholder="Sentence" required></textarea>
+                <button type="submit">Add Criminal</button>
+            </form>
+        </div>
+        <div id="view-criminals-section" class="section">
+            <h1>View Criminals</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>Full Name</th>
+                        <th>Date of Birth</th>
+                        <th>Gender</th>
+                        <th>Local Government</th>
+                        <th>State</th>
+                        <th>Crime</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tbody id="criminals-table">
+                    <!-- Criminals will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

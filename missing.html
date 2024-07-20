@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missing Persons</title>
+    <link rel="stylesheet" href="/Styles/missing.css">
+</head>
+<body>
+    <header>
+        <section class="logo">
+            <img src="/images/cuffLogo.png" alt="logo" srcset="">
+        </section>
+        <h1>CRIME MANAGEMENT SYSTEM</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="missing.html">Missing Person</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="missing-persons">
+            <h2>Missing Persons</h2>
+            <div id="persons-container" class="persons-container">
+                <!-- Person cards will be appended here by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('persons-container');
+
+            fetch('http://localhost:7000/police/allMissing')
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(person => {
+                        const personCard = document.createElement('div');
+                        personCard.className = 'person-card';
+
+                        const personImage = document.createElement('img');
+                        personImage.src = person.image; // Assuming the API provides an image field
+                        personImage.alt = person.fullname;
+
+                        const personDetails = document.createElement('div');
+                        personDetails.className = 'person-details';
+
+                        const personName = document.createElement('h3');
+                        personName.textContent = person.fullname;
+
+                        const personGender = document.createElement('p');
+                        personGender.textContent = `Gender: ${person.gender}`;
+
+                        const personAge = document.createElement('p');
+                        personAge.textContent = `Age: ${person.age}`;
+
+                        const personDescription = document.createElement('p');
+                        personDescription.textContent = `Description:  ${person.description}`;
+
+                        personDetails.appendChild(personName);
+                        personDetails.appendChild(personGender);
+                        personDetails.appendChild(personAge);
+                        personDetails.appendChild(personDescription);
+
+                        personCard.appendChild(personImage);
+                        personCard.appendChild(personDetails);
+
+                        container.appendChild(personCard);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                    const errorMessage = document.createElement('p');
+                    errorMessage.textContent = 'Failed to load missing persons data.';
+                    container.appendChild(errorMessage);
+                });
+        });
+    </script>
+</body>
+</html>

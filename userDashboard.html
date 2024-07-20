@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="./Styles/userDashboard.css">
+    <script defer src="./Scripts/userDashboard.js"></script>
+    <script src="https://kit.fontawesome.com/4e247dda8f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="/images/cuffLogo.png" alt="logo" class="logo">
+        </div>
+        <h2>User Dashboard</h2>
+        <ul>
+            <li><a href="#" id="profile"><i class="fa-solid fa-user"></i>   Profile</a></li>
+            <li><a href="#" id="report-crime"><i class="fa-solid fa-list-check"></i>  Report Crime</a></li>
+            <li><a href="#" id="view-missing-persons"><i class="fa-solid fa-address-book"></i>  View Missing Person</a></li>
+            <li><a href="#" id="logout" class="logout"><i class="fa-solid fa-person-walking-arrow-right"></i>  Logout</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="default section active">
+            <h1>Welcome to your Dashboard!</h1>
+            <h3 id="active-user"><i class="fa-solid fa-user"></i>   </h3>
+            <p id="email"></p>
+
+             <!-- Card for number of reports -->
+             <div class="card">
+                <h3>Total Reports</h3> <br>
+                <p id="number-of-reports">0</p>
+            </div>
+
+            <!-- Table to display reports -->
+            <h2>Your Reports</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Crime</th>
+                        <th>Location</th>
+                        <th>Description</th>
+                        <th>Evidence</th>
+                    </tr>
+                </thead>
+                <tbody id="reports-table">
+                    <!-- Reports will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+        <div id="profile-section" class="section" style="display: none;">
+            <h2>Profile</h2>
+            <form id="profile-form" action="" method="put">
+                <input type="text" id="name" placeholder="Full Name" required>
+                <input type="tel" placeholder="Phone" required>
+                <input type="email" placeholder="Email" required>
+                <input type="text" placeholder="Address" required>
+                <input type="text" placeholder="Street" required>
+                <input type="text" placeholder="State" required>
+                <button type="submit">Update Profile</button>
+            </form>
+        </div>
+
+        
+        <div id="report-crime-section" class="section" style="display: none;">
+            <h2>Report Crime</h2>
+            <form id="report-crime-form" action="" method="post">
+                <select required id="crime" name="crime">
+                    <option value="" disabled selected>Select Crime Type</option>
+                    <option value="Robbery">Robbery</option>
+                    <option value="Murder">Murder</option>
+                    <option value="Sexual Assault">Sexual Assault</option>
+                    <option value="Cybercrime">Cybercrime</option>
+                    <option value="Kidnapping">Kidnapping</option>
+                </select>
+                <input type="text" id="location" name="location" placeholder="Location" required>
+                <textarea placeholder="Description" id="description" name="description" required></textarea>
+                <input type="file" id="evidence" name="evidence" accept="image/*" required>
+                <button type="submit">Submit Report</button>
+            </form>
+        </div>
+
+
+
+        <div id="view-missing-persons-section" class="section" style="display: none;">
+            <h2>View Missing Persons</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <!-- <th>ID</th> -->
+                        <th>Image</th>
+                        <th>Fullname</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody id="missing-persons-table">
+                    <!-- Missing persons will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
