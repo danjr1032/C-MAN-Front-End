@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         // Replace with your API endpoint
-        const apiUrl = 'http://localhost:7000/user/feedback';
+        const apiUrl = 'https://c-man-api.onrender.com/user/feedback';
 
         // Make an asynchronous request to the API
         fetch(apiUrl, {

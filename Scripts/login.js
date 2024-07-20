@@ -23,7 +23,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     };
 
     // Make the API request
-    fetch('http://localhost:7000/user/login', {
+    fetch('https://c-man-api.onrender.com/user/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

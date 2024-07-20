@@ -90,7 +90,7 @@ document.getElementById('profile-form').addEventListener('submit', function(even
         };
 
         const uidCookie = getCookie("uid");
-        fetch(`http://localhost:7000/user/profileUpdate/${uidCookie}`, {
+        fetch(`https://c-man-api.onrender.com/user/profileUpdate/${uidCookie}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -140,7 +140,7 @@ document.getElementById('profile-form').addEventListener('submit', function(even
         const uidCookie = getCookie("uid");
         console.log('UID Cookie:', uidCookie);
     
-        fetch(`http://localhost:7000/user/complaint/${uidCookie}`, {
+        fetch(`https://c-man-api.onrender.com/user/complaint/${uidCookie}`, {
             method: 'POST',
             body: formData
         })
@@ -169,7 +169,7 @@ document.getElementById('profile-form').addEventListener('submit', function(even
     
 
     function loadMissingPersons() {
-        fetch('http://localhost:7000/user/missing', {
+        fetch('https://c-man-api.onrender.com/user/missing', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -214,7 +214,7 @@ document.getElementById('profile-form').addEventListener('submit', function(even
     const uidCookie = getCookie("uid");
     console.log('UID Cookie:', uidCookie);
 
-    fetch(`http://localhost:7000/user/reports/${uidCookie}`, {
+    fetch(`https://c-man-api.onrender.com/user/reports/${uidCookie}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -277,7 +277,7 @@ function createComplaintRow(complaint) {
  // Function to fetch complaint count
  async function fetchComplaintCount(userId) {
      try {
-         const response = await fetch(`http://localhost:7000/user/complaints/count/${userId}`, {
+         const response = await fetch(`https://c-man-api.onrender.com/user/complaints/count/${userId}`, {
              method: "GET",
              headers: {
                  "Content-Type": "application/json"

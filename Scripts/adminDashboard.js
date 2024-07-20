@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Fetch complaints data
     function fetchComplaints() {
-        fetch("http://localhost:7000/admini/complaints", {
+        fetch("https://c-man-api.onrender.com/admini/complaints", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function deleteComplaint(event) {
     const complaintId = event.target.dataset.id;
 
-    fetch(`http://localhost:7000/admini/complaints/${complaintId}`, {
+    fetch(`https://c-man-api.onrender.com/admini/complaints/${complaintId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -160,7 +160,7 @@ function addPoliceOfficer() {
         console.log(pair[0] + ': ' + pair[1]);
     }
 
-    fetch("http://localhost:7000/admini/police/registerPolice", {
+    fetch("https://c-man-api.onrender.com/admini/police/registerPolice", {
         method: "POST",
         body: formData,
     })
@@ -194,7 +194,7 @@ function addPoliceOfficer() {
 
    // Fetch police officers data
 function fetchPoliceOfficers() {
-    fetch("http://localhost:7000/admini/allPolice", {
+    fetch("https://c-man-api.onrender.com/admini/allPolice", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -254,7 +254,7 @@ function createPoliceOfficerRow(officer) {
 function deletePolice(event) {
     const policeId = event.target.dataset.id;
 
-    fetch(`http://localhost:7000/admini/police/${policeId}`, {
+    fetch(`https://c-man-api.onrender.com/admini/police/${policeId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -298,7 +298,7 @@ const addNewsForm = document.getElementById("add-news-form");
     function addNews() {
         const formData = new FormData(addNewsForm);
 
-        fetch("http://localhost:7000/admini/addNews", {
+        fetch("https://c-man-api.onrender.com/admini/addNews", {
             method: "POST",
             body: formData,
         })
@@ -328,7 +328,7 @@ const addNewsForm = document.getElementById("add-news-form");
 
     // Fetch users data
     function fetchUsers() {
-        fetch("http://localhost:7000/admini/allUsers", {
+        fetch("https://c-man-api.onrender.com/admini/allUsers", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -388,7 +388,7 @@ const addNewsForm = document.getElementById("add-news-form");
 function deleteUser(event) {
     const userId = event.target.dataset.id;
 
-    fetch(`http://localhost:7000/admini/user/${userId}`, {
+    fetch(`https://c-man-api.onrender.com/admini/user/${userId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -424,7 +424,7 @@ function deleteUser(event) {
 
     // Fetch feedbacks data
     function fetchFeedbacks() {
-        fetch("http://localhost:7000/admini/feedbacks", {
+        fetch("https://c-man-api.onrender.com/admini/feedbacks", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -483,7 +483,7 @@ function createFeedbackRow(feedback) {
 function deleteFeedback(event) {
     const feedbackId = event.target.dataset.id;
 
-    fetch(`http://localhost:7000/admini/feedback/${feedbackId}`, { 
+    fetch(`https://c-man-api.onrender.com/admini/feedback/${feedbackId}`, { 
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -559,7 +559,7 @@ function fetchCounts() {
 }
 
 function fetchTotalComplaints() {
-    fetch("http://localhost:7000/admini/reportCount")
+    fetch("https://c-man-api.onrender.com/admini/reportCount")
         .then(response => response.json())
         .then(data => {
             document.getElementById("total-complaints").textContent = data.count;
@@ -568,7 +568,7 @@ function fetchTotalComplaints() {
 }
 
 function fetchTotalPolice() {
-    fetch("http://localhost:7000/police/count")
+    fetch("https://c-man-api.onrender.com/police/count")
         .then(response => response.json())
         .then(data => {
             document.getElementById("total-police").textContent = data.count;
@@ -577,7 +577,7 @@ function fetchTotalPolice() {
 }
 
 function fetchTotalUsers() {
-    fetch("http://localhost:7000/admini/userCount")
+    fetch("https://c-man-api.onrender.com/admini/userCount")
         .then(response => response.json())
         .then(data => {
             document.getElementById("total-users").textContent = data.count;
@@ -586,7 +586,7 @@ function fetchTotalUsers() {
 }
 
 function fetchTotalFeedbacks() {
-    fetch("http://localhost:7000/admini/feedbackCount")
+    fetch("https://c-man-api.onrender.com/admini/feedbackCount")
         .then(response => response.json())
         .then(data => {
             document.getElementById("total-feedbacks").textContent = data.count;

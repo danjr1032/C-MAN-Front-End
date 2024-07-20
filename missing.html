@@ -36,7 +36,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('persons-container');
 
-            fetch('http://localhost:7000/police/allMissing')
+            fetch('https://c-man-api.onrender.com/police/allMissing')
                 .then(response => response.json())
                 .then(data => {
                     data.forEach(person => {

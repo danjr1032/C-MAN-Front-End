@@ -64,7 +64,7 @@
         });
     
         function login(userType, credentials) {
-            const url = userType === "admin" ? "http://localhost:7000/admini/login" : "http://localhost:7000/police/login";
+            const url = userType === "admin" ? "https://c-man-api.onrender.com/admini/login" : "https://c-man-api.onrender.com/police/login";
     
             fetch(url, {
                 method: "POST",

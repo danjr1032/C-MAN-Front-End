@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         // Replace with your API endpoint
-        const apiUrl = 'http://localhost:7000/user/signup';
+        const apiUrl = 'https://c-man-api.onrender.com/user/signup';
 
         fetch(apiUrl, {
             method: 'POST',

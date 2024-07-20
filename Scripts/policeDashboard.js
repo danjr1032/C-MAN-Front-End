@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
    // Fetch complaints data
    function fetchComplaints() {
-    fetch("http://localhost:7000/police/complaints", {
+    fetch("https://c-man-api.onrender.com/police/complaints", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -111,7 +111,7 @@ function createComplaintRow(complaint) {
 function deleteComplaint(event) {
     const complaintId = event.target.dataset.id;
 
-    fetch(`http://localhost:7000/police/complaints/${complaintId}`, {
+    fetch(`https://c-man-api.onrender.com/police/complaints/${complaintId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -146,7 +146,7 @@ function deleteComplaint(event) {
     
     async function loadMissingPersons() {
         try {
-            const response = await fetch('http://localhost:7000/police/allMissing');
+            const response = await fetch('https://c-man-api.onrender.com/police/allMissing');
             const missingPersonsData = await response.json();
 
             const missingPersonsTable = document.getElementById("missing-persons-table");
@@ -176,7 +176,7 @@ function deleteComplaint(event) {
 
     async function loadCriminals() {
         try {
-            const response = await fetch('http://localhost:7000/police/criminals');
+            const response = await fetch('https://c-man-api.onrender.com/police/criminals');
             const criminalsData = await response.json();
 
             const criminalsTable = document.getElementById("criminals-table");
@@ -212,7 +212,7 @@ function deleteComplaint(event) {
 function deleteCriminal(event) {
     const criminalId = event.target.dataset.id;
 
-    fetch(`http://localhost:7000/police/criminal/${criminalId}`, {
+    fetch(`https://c-man-api.onrender.com/police/criminal/${criminalId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -265,7 +265,7 @@ async function addMissingPerson(event) {
     console.log('Form Data:', formData);
 
     try {
-        const response = await fetch('http://localhost:7000/police/addMissing', {
+        const response = await fetch('https://c-man-api.onrender.com/police/addMissing', {
             method: 'POST',
             body: formData,
         });
@@ -298,7 +298,7 @@ document.getElementById('add-criminal-form').addEventListener('submit', function
 
     const formData = new FormData(this);
 
-    fetch('http://localhost:7000/police/addCriminal', {
+    fetch('https://c-man-api.onrender.com/police/addCriminal', {
         method: 'POST',
         body: formData
     })
@@ -323,7 +323,7 @@ document.getElementById('add-criminal-form').addEventListener('submit', function
 
 
 function fetchCrimeCount() {
-    fetch("http://localhost:7000/police/count", {
+    fetch("https://c-man-api.onrender.com/police/count", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -352,7 +352,7 @@ document.addEventListener('DOMContentLoaded', fetchCrimeCount());
 
 
 function fetchCriminalCount() {
-    fetch("http://localhost:7000/police/count", {
+    fetch("https://c-man-api.onrender.com/police/count", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -378,7 +378,7 @@ document.addEventListener('DOMContentLoaded', fetchCriminalCount());
 
 
 function missingCount() {
-    fetch("http://localhost:7000/police/count", {
+    fetch("https://c-man-api.onrender.com/police/count", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
