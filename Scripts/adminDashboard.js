@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${complaint._id}</td>
+            <td>${complaint.userID}</td>
             <td>${complaint.crime}</td>
             <td>${complaint.location}</td>
             <td><img src="${complaint.evidence}" alt="Evidence" width="200" height="150"/></td>

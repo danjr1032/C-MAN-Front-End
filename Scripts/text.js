@@ -114,21 +114,5 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    async function deleteMissingPerson(personId) {
-        try {
-            const response = await fetch(`http://localhost:7000/police/missingPersons/${personId}`, {
-                method: 'DELETE',
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to delete missing person');
-            }
-
-            // Refresh the missing persons list after deletion
-            loadMissingPersons();
-            alert('Missing person deleted successfully');
-        } catch (error) {
-            console.error('Error deleting missing person:', error);
-        }
-    }
+    
 });

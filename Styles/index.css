@@ -62,7 +62,11 @@ nav ul li a {
     padding: 10px 0;
     font-size: 1.2rem;
     font-weight: bold;
-    margin-top: 10px; /* Adjust as needed to provide spacing below the fixed header */
+    margin-top: 1rem; 
+    position: fixed;
+    margin-right: 5rem;
+    width: 100%;
+    display: flex;
 }
 .hero {
     text-align: center;
