@@ -190,7 +190,7 @@ document.getElementById('profile-form').addEventListener('submit', function(even
 
                 row.innerHTML = `
                     
-                    <td><img src="${person.image}" alt="${person.fullname}" style="width:150px; height:150px;"></td>
+                    <td><img src="${person.image}" alt="Image" style="width:150px; height:150px;"></td>
                     <td>${person.fullname}</td>
                     <td>${person.gender}</td>
                     <td>${person.age}</td>

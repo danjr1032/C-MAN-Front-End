@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(responseData => {
             // Handle the response from the API
             alert('Signup successful!');
-            window.location.href="login.html";
+            window.location.href="https://c-man-front-end.vercel.app/login.html";
             // Clear the form
             signupForm.reset();
         })
