@@ -49,7 +49,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
         setCookie('fullname', data.user.fullname, 60)
         setCookie('email', data.user.email, 60)
 
-        window.location.href = "https://c-man-front-end.vercel.app/userDashboard.html";
+        window.location.href = "userDashboard.html";
         console.log('Login successful:', data);
         // Optionally, redirect to another page or show a success message
     })

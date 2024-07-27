@@ -3,8 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function fetchNews() {
-    fetch('https://c-man-api.onrender.com/user/news', { // Adjust the URL to your actual endpoint
-        method: 'GET',
+    fetch('https://c-man-api.onrender.com/user/news', { 
         headers: {
             'Content-Type': 'application/json'
         }
