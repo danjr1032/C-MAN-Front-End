@@ -199,3 +199,16 @@ img {
 .delete-button:hover {
     background-color: #7ab1e9; /* Darker red on hover */
 }
+
+.update-button {
+    background-color: #04b60d; 
+    color: #fff; 
+    border: none; 
+    padding: 8px 12px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+}
+
+.update-button:hover {
+    background-color: #7ab1e9; /* Darker red on hover */
+}

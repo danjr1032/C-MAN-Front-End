@@ -56,6 +56,7 @@
                         <th>Description</th>
                         <th>Evidence</th>
                         <th>Status</th>
+                        <th>Progress Report</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -64,6 +65,31 @@
                 </tbody>
             </table>
         </div>
+<!-- Popup form for updating complaint -->
+<div id="update-popup" style="display:none;">
+    <div id="update-form" style="padding: 20px; background: #fff; border: 1px solid #ccc; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); z-index: 1000;">
+        <h2>Update Complaint</h2>
+        <form id="update-complaint-form">
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Resolved">Resolved</option>
+            </select>
+            <br>
+            <label for="progressReport">Progress Report:</label>
+            <textarea id="progressReport" name="progressReport" rows="4" cols="50"></textarea>
+            <br>
+            <input type="hidden" id="complaintId">
+            <button type="submit">Update</button>
+            <button type="button" onclick="closeUpdatePopup()">Cancel</button>
+        </form>
+    </div>
+    <!-- Optional: Overlay to close popup on click outside -->
+    <div id="overlay" onclick="closeUpdatePopup()" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
+</div>
+
+  
         <div id="add-missing-person-section" class="section">
             <h1>Add Missing Person</h1>
             <form id="add-missing-person-form" action="javascript:void(0);">

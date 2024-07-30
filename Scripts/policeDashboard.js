@@ -99,9 +99,12 @@ function createComplaintRow(complaint) {
         <td>${complaint.description}</td>
         <td><img src="${complaint.evidence}" alt="Evidence" style="width:200px; height:150px;"/></td>
         <td>${complaint.status}</td>
+        <td>${complaint.progressReport}</td>
         <td><button class="delete-button" data-id="${complaint._id}">Delete</button></td>
+        <td><button class="update-button" data-id="${complaint._id}">Update</button></td>
     `;
     row.querySelector(".delete-button").addEventListener("click", deleteComplaint);
+    row.querySelector(".update-button").addEventListener("click", openUpdatePopup);
     return row;
 }
 
@@ -141,7 +144,105 @@ function deleteComplaint(event) {
 
 
 
-    
+// Function to open the update popup
+function openUpdatePopup(event) {
+    const complaintId = event.target.dataset.id;
+    console.log('Fetching complaint details for ID:', complaintId);
+
+    const popup = document.getElementById('update-popup');
+    document.getElementById('complaintId').value = complaintId;
+
+    // Fetch the current status and progress report
+    fetch(`https://c-man-api.onrender.com/police/complaints/${complaintId}`)
+        .then(response => {
+            console.log('Response status:', response.status);
+            console.log('Response headers:', response.headers);
+
+            // Log the response text for debugging
+            return response.text().then(text => {
+                console.log('Response text:', text);
+
+                // Check if the response is in JSON format
+                if (response.ok && response.headers.get('content-type')?.includes('application/json')) {
+                    return JSON.parse(text);
+                } else {
+                    throw new Error(`Expected JSON but got: ${text}`);
+                }
+            });
+        })
+        .then(data => {
+            if (data.success) {
+                const { status, progressReport } = data.complaint;
+                document.getElementById('status').value = status;
+                document.getElementById('progressReport').value = progressReport || '';
+                popup.style.display = 'block';
+            } else {
+                alert('Failed to fetch complaint details');
+                console.error("Failed to fetch complaint:", data.message);
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching complaint details:", error);
+        });
+}
+
+
+// Function to close the update popup
+function closeUpdatePopup() {
+    document.getElementById('update-popup').style.display = 'none';
+}
+
+// Handle form submission
+document.getElementById('update-complaint-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const complaintId = document.getElementById('complaintId').value;
+    const status = document.getElementById('status').value;
+    const progressReport = document.getElementById('progressReport').value;
+    // fetch(`http://localhost:7000/police/complaint/${complaintId}
+fetch(`https://c-man-api.onrender.com/police/complaint/${complaintId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ status, progressReport })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === 'Report updated successfully') {
+            // Update the complaint in the table
+            updateComplaintRow(complaintId, status, progressReport);
+            closeUpdatePopup();
+        } else {
+            alert('Failed to update complaint');
+            console.error("Failed to update complaint:", data.error);
+        }
+    })
+    .catch(error => {
+        console.error("Error updating complaint:", error);
+    });
+});
+
+// Update the row with new data
+function updateComplaintRow(complaintId, status, progressReport) {
+    const rows = document.querySelectorAll('#complaints-table tr');
+    rows.forEach(row => {
+        if (row.querySelector('.update-button').dataset.id === complaintId) {
+            row.querySelector('td:nth-child(6)').textContent = status;
+            row.querySelector('td:nth-child(7)').textContent = progressReport;
+        }
+    });
+}
+
+
+
+
+
+
+
+
+
+
 
     
     async function loadMissingPersons() {
