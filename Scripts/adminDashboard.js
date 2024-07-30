@@ -107,6 +107,8 @@ document.addEventListener("DOMContentLoaded", function() {
             <td>${complaint.location}</td>
             <td><img src="${complaint.evidence}" alt="Evidence" width="200" height="150"/></td>
             <td>${complaint.status}</td>
+            <td>${complaint.reportDate}</td>
+            <td>${complaint.progressReport}</td>
             <td><button class="delete-button" data-id="${complaint._id}">Delete</button></td>
         `;
         row.querySelector(".delete-button").addEventListener("click", deleteComplaint);

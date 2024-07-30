@@ -99,6 +99,7 @@ function createComplaintRow(complaint) {
         <td>${complaint.description}</td>
         <td><img src="${complaint.evidence}" alt="Evidence" style="width:200px; height:150px;"/></td>
         <td>${complaint.status}</td>
+        <td>${complaint.reportDate}</td>
         <td>${complaint.progressReport}</td>
         <td><button class="delete-button" data-id="${complaint._id}">Delete</button></td>
         <td><button class="update-button" data-id="${complaint._id}">Update</button></td>
