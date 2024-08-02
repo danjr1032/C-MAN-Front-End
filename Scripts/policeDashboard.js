@@ -295,9 +295,12 @@ function updateComplaintRow(complaintId, status, progressReport) {
                     <td>${criminal.localGovernment}</td>
                     <td>${criminal.state}</td>
                     <td>${criminal.crime}</td>
+                    <td>${criminal.sentence}</td>
                     <td><button class="delete-button" data-id="${criminal._id}">Delete</button></td>
+                    <td><button class="update-button" data-id="${criminal._id}">Update</button></td>
                 `;
                 row.querySelector(".delete-button").addEventListener("click", deleteCriminal);
+                row.querySelector(".update-button").addEventListener("click", openUpdateCriminalPopup);
     // return row;
 
                 criminalsTable.appendChild(row);
@@ -307,6 +310,95 @@ function updateComplaintRow(complaintId, status, progressReport) {
         }
     }
 });
+
+
+
+
+
+// Function to open the update popup for criminals
+function openUpdateCriminalPopup(criminalId) {
+    const popup = document.getElementById('update-criminal-popup');
+    document.getElementById('criminalId').value = criminalId;
+
+    // Fetch the current criminal details
+    fetch(`https://c-man-api.onrender.com/criminals/${criminalId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const { fullName, dateOfBirth, gender } = data.criminal; // Add other fields as necessary
+                document.getElementById('fullName').value = fullName;
+                document.getElementById('dateOfBirth').value = dateOfBirth;
+                document.getElementById('gender').value = gender;
+                // Set other fields as necessary
+                popup.style.display = 'block';
+            } else {
+                alert('Failed to fetch criminal details');
+                console.error("Failed to fetch criminal:", data.message);
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching criminal details:", error);
+        });
+}
+
+// Function to close the update popup
+function closeUpdateCriminalPopup() {
+    document.getElementById('update-criminal-popup').style.display = 'none';
+}
+
+// Handle form submission
+document.getElementById('update-criminal-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    
+    const criminalId = document.getElementById('criminalId').value;
+    const fullName = document.getElementById('fullName').value;
+    const dateOfBirth = document.getElementById('dateOfBirth').value;
+    const gender = document.getElementById('gender').value;
+    // Get other fields as necessary
+
+    fetch(`https://c-man-api.onrender.com/criminals/${criminalId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ fullName, dateOfBirth, gender }) // Add other fields as necessary
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === 'Criminal updated successfully') {
+            // Update the criminal in the table or UI
+            updateCriminalRow(criminalId, fullName, dateOfBirth, gender); // Add other fields as necessary
+            closeUpdateCriminalPopup();
+        } else {
+            alert('Failed to update criminal');
+            console.error("Failed to update criminal:", data.error);
+        }
+    })
+    .catch(error => {
+        console.error("Error updating criminal:", error);
+    });
+});
+
+// Update the row with new data (implement this function as necessary)
+function updateCriminalRow(criminalId, fullName, dateOfBirth, gender) {
+    const rows = document.querySelectorAll('#criminals-table tr');
+    rows.forEach(row => {
+        if (row.querySelector('.update-button').dataset.id === criminalId) {
+            row.querySelector('td:nth-child(2)').textContent = fullName;
+            row.querySelector('td:nth-child(3)').textContent = dateOfBirth;
+            row.querySelector('td:nth-child(4)').textContent = gender;
+            // Update other fields as necessary
+        }
+    });
+}
+
+
+
+
+
+
+
+
 
 
 
