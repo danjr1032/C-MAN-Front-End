@@ -261,6 +261,7 @@ function createComplaintRow(complaint) {
         <td>${complaint.description}</td>
         <td><img src="${complaint.evidence}" alt="Evidence" width="200" height="150"/></td>
         <td>${complaint.reportDate}</td>
+        <td>${complaint.status}</td>
         <td>${complaint.progressReport}</td>
     `;
     return row;
