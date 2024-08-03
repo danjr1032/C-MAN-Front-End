@@ -187,6 +187,7 @@ function openUpdatePopup(event) {
         });
 }
 
+closeUpdatePopup();
 
 // Function to close the update popup
 function closeUpdatePopup() {
