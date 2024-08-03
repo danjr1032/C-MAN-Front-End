@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             if (data.success) {
                 alert('Login successful!');
-                window.location.href = 'policeDashboard.html'; 
+                window.location.href = 'https://c-man-front-end.vercel.app/policeDashboard.html'; 
             } else {
                 alert('Login failed: ' + data.message);
             }
