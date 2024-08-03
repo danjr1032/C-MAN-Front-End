@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
     logoutLink.addEventListener("click", function(event) {
         event.preventDefault();
         alert("Logged out!");
-        window.location.href = "adminPoliceLogin.html";
+        window.location.href = "policeLogin.html";
     });
 
     function showSection(section) {
@@ -297,10 +297,10 @@ function updateComplaintRow(complaintId, status, progressReport) {
                     <td>${criminal.crime}</td>
                     <td>${criminal.sentence}</td>
                     <td><button class="delete-button" data-id="${criminal._id}">Delete</button></td>
-                    <td><button class="update-button" data-id="${criminal._id}">Update</button></td>
+                    <td><button class="view-button" data-id="${criminal._id}" style=" padding="30px">View</button></td>
                 `;
                 row.querySelector(".delete-button").addEventListener("click", deleteCriminal);
-                row.querySelector(".update-button").addEventListener("click", openUpdateCriminalPopup);
+                row.querySelector(".view-button").addEventListener("click", ViewCriminal);
     // return row;
 
                 criminalsTable.appendChild(row);
@@ -315,84 +315,63 @@ function updateComplaintRow(complaintId, status, progressReport) {
 
 
 
-// Function to open the update popup for criminals
-function openUpdateCriminalPopup(criminalId) {
-    const popup = document.getElementById('update-criminal-popup');
-    document.getElementById('criminalId').value = criminalId;
+async function ViewCriminal(event) {
+    const criminalId = event.target.getAttribute('data-id');
+    try {
+        const response = await fetch(`https://c-man-api.onrender.com/police/criminal/${criminalId}`);
+        const criminal = await response.json();
+        
+        const criminalDetails = document.getElementById("criminal-details");
+        criminalDetails.innerHTML = `
+            <h2>Criminal Details</h2>
+            <p><strong>ID:</strong> ${criminal._id}</p>
+            <img src="${criminal.image}" alt="${criminal.fullname}" style="width:200px; height:150px;">
+            <p><strong>Full Name:</strong> ${criminal.fullname}</p>
+            <p><strong>Date of Birth:</strong> ${criminal.DOB}</p>
+            <p><strong>Gender:</strong> ${criminal.gender}</p>
+            <p><strong>Occupation:</strong> ${criminal.occupation}</p>
+            <p><strong>Marital Status:</strong> ${criminal.maritalStatus}</p>
+            <p><strong>Weight:</strong> ${criminal.weight}</p>
+            <p><strong>Height:</strong> ${criminal.height}</p>
+            <p><strong>Blood Group:</strong> ${criminal.bloodGroup}</p>
+            <p><strong>EyeColor:</strong> ${criminal.eyeColor}</p>
+            <p><strong>Address:</strong> ${criminal.address}</p>
+            <p><strong>Local Government:</strong> ${criminal.localGovernment}</p>
+            <p><strong>State:</strong> ${criminal.state}</p>
+            <p><strong>Crime:</strong> ${criminal.crime}</p>
+            <p><strong>DateCommitted:</strong> ${criminal.dateCommitted}</p>
+            <p><strong>DateConvicted:</strong> ${criminal.dateConvicted}</p>
+            <p><strong>Sentence:</strong> ${criminal.sentence}</p>
+            <p><strong>Contact Fullname:</strong> ${criminal.contactFullname}</p>
+            <p><strong>Contact Number:</strong> ${criminal.contactNumber}</p>
+            <p><strong>Contact Address:</strong> ${criminal.contactaddress}</p>
+            <p><strong>Contact Relationship:</strong> ${criminal.contactRelationship}</p>
+        `;
 
-    // Fetch the current criminal details
-    fetch(`https://c-man-api.onrender.com/criminals/${criminalId}`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                const { fullName, dateOfBirth, gender } = data.criminal; // Add other fields as necessary
-                document.getElementById('fullName').value = fullName;
-                document.getElementById('dateOfBirth').value = dateOfBirth;
-                document.getElementById('gender').value = gender;
-                // Set other fields as necessary
-                popup.style.display = 'block';
-            } else {
-                alert('Failed to fetch criminal details');
-                console.error("Failed to fetch criminal:", data.message);
-            }
-        })
-        .catch(error => {
-            console.error("Error fetching criminal details:", error);
-        });
+        const modal = document.getElementById("criminal-modal");
+        modal.style.display = "block";
+    } catch (error) {
+        console.error('Error fetching criminal details:', error);
+    }
 }
 
-// Function to close the update popup
-function closeUpdateCriminalPopup() {
-    document.getElementById('update-criminal-popup').style.display = 'none';
-}
-
-// Handle form submission
-document.getElementById('update-criminal-form').addEventListener('submit', function (event) {
-    event.preventDefault();
-    
-    const criminalId = document.getElementById('criminalId').value;
-    const fullName = document.getElementById('fullName').value;
-    const dateOfBirth = document.getElementById('dateOfBirth').value;
-    const gender = document.getElementById('gender').value;
-    // Get other fields as necessary
-
-    fetch(`https://c-man-api.onrender.com/criminals/${criminalId}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ fullName, dateOfBirth, gender }) // Add other fields as necessary
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.message === 'Criminal updated successfully') {
-            // Update the criminal in the table or UI
-            updateCriminalRow(criminalId, fullName, dateOfBirth, gender); // Add other fields as necessary
-            closeUpdateCriminalPopup();
-        } else {
-            alert('Failed to update criminal');
-            console.error("Failed to update criminal:", data.error);
-        }
-    })
-    .catch(error => {
-        console.error("Error updating criminal:", error);
-    });
+const closeModal = document.querySelector(".close");
+closeModal.addEventListener("click", function() {
+    const modal = document.getElementById("criminal-modal");
+    modal.style.display = "none";
 });
 
-// Update the row with new data (implement this function as necessary)
-function updateCriminalRow(criminalId, fullName, dateOfBirth, gender) {
-    const rows = document.querySelectorAll('#criminals-table tr');
-    rows.forEach(row => {
-        if (row.querySelector('.update-button').dataset.id === criminalId) {
-            row.querySelector('td:nth-child(2)').textContent = fullName;
-            row.querySelector('td:nth-child(3)').textContent = dateOfBirth;
-            row.querySelector('td:nth-child(4)').textContent = gender;
-            // Update other fields as necessary
-        }
-    });
-}
+window.addEventListener("click", function(event) {
+    const modal = document.getElementById("criminal-modal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+});
 
-
+const printButton = document.getElementById("print-btn");
+printButton.addEventListener("click", function() {
+    window.print();
+});
 
 
 

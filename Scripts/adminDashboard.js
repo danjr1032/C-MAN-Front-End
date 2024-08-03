@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Perform logout actions if needed
         alert("Logged out!");
         // Redirect to login page or perform other actions
-        window.location.href = "adminPoliceLogin.html";
+        window.location.href = "adminLogin.html";
     });
 
     // Function to show/hide sections
