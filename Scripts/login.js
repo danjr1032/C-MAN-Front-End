@@ -35,7 +35,9 @@ document.getElementById('login-form').addEventListener('submit', function(event)
         if (!response.ok) {
             // If the response status is 404, user does not exist
             if (response.status === 404) {
+                alert('User does not exist!');
                 throw new Error('User does not exist');
+
             }
             throw new Error('Network response was not ok');
         }

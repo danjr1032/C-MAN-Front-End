@@ -325,7 +325,7 @@ async function ViewCriminal(event) {
         const criminalDetails = document.getElementById("criminal-details");
         criminalDetails.innerHTML = `
             <h2>Criminal Details</h2>
-            <p><strong>ID:</strong> ${criminal._id}</p>
+            <p><strong>ID:</strong>                   ${criminal._id}</p>
             <img src="${criminal.image}" alt="${criminal.fullname}" style="width:200px; height:150px;">
             <p><strong>Full Name:</strong> ${criminal.fullname}</p>
             <p><strong>Date of Birth:</strong> ${criminal.DOB}</p>

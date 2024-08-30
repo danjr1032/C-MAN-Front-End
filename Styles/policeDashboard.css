@@ -213,7 +213,18 @@ img {
     background-color: #7ab1e9; /* Darker red on hover */
 }
 
+.view-button {
+    background-color:#04b60d; 
+    color: #fff; 
+    border: none; 
+    padding: 8px 12px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+}
 
+.view-button:hover {
+    background-color: #7ab1e9; /* Darker red on hover */
+}
 
 .modal {
     display: none;
@@ -252,7 +263,21 @@ img {
 
 #print-btn {
     margin-top: 20px;
-    padding: 6rem;
-    color: #04b60d;
+    padding: 1rem;
+    width: 10%;
+    color: #000000;
+    background-color: #04b60d;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 1rem;
     cursor: pointer;
 }
+
+
+p {
+    margin: 0.5em 0; /* Add vertical space between paragraphs */
+  }
+  p strong {
+    display: inline-block;
+    width: 16rem; /* Adjust the width to your needs */
+  }

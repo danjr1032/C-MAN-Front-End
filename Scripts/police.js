@@ -19,11 +19,23 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             body: JSON.stringify(loginData)
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                // If the response status is 404, Police does not exist
+                if (response.status === 404) {
+                    alert('Police does not exist!');
+                    throw new Error('User does not exist');
+    
+                }
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+            
         .then(data => {
             if (data.success) {
                 alert('Login successful!');
-                window.location.href = 'https://c-man-front-end.vercel.app/policeDashboard.html'; 
+                window.location.href = 'policeDashboard.html'; 
             } else {
                 alert('Login failed: ' + data.message);
             }
