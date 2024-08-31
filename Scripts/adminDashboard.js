@@ -495,6 +495,7 @@ function deleteFeedback(event) {
     .then(response => {
         if (!response.ok) {
             return response.json().then(error => {
+                alert('Failed to delete feedback');
                 throw new Error(`HTTP error! Status: ${response.status}, Message: ${error.error}`);
             });
         }
