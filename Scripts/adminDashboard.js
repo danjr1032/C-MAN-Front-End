@@ -492,15 +492,16 @@ function deleteFeedback(event) {
             "Content-Type": "application/json"
         }
     })
-    // .then(response => {
-    //     if (!response.ok) {
-    //         return response.json().then(error => {
-    //             alert('Failed to delete feedback');
-    //             throw new Error(`HTTP error! Status: ${response.status}, Message: ${error.error}`);
-    //         });
-    //     }
-    //     return response.json();
-    // })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(error => {
+                alert('Failed to delete feedback');
+                row.remove();
+                throw new Error(`HTTP error! Status: ${response.status}, Message: ${error.error}`);
+            });
+        }
+        return response.json();
+    })
     .then(data => {
         if (data.success) {
             const row = event.target.closest('tr');
