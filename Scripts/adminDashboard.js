@@ -495,8 +495,6 @@ function deleteFeedback(event) {
     .then(response => {
         if (!response.ok) {
             return response.json().then(error => {
-                alert('Failed to delete feedback');
-                row.remove();
                 throw new Error(`HTTP error! Status: ${response.status}, Message: ${error.error}`);
             });
         }
@@ -506,7 +504,7 @@ function deleteFeedback(event) {
         if (data.success) {
             const row = event.target.closest('tr');
             alert(`Feedback with ID ${feedbackId} has been deleted.`);
-            row.remove();
+            row.remove(); // Remove the row only after successful deletion
             console.log(`Feedback with ID ${feedbackId} has been deleted.`);
         } else {
             alert('Failed to delete feedback');
@@ -515,9 +513,10 @@ function deleteFeedback(event) {
     })
     .catch(error => {
         console.error('Error deleting feedback:', error);
-        alert('Error deleting feedback.');
+        alert('Error deleting feedback. Please try again.');
     });
 }
+
 
 
 
