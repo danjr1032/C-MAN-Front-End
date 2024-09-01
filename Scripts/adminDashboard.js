@@ -482,7 +482,6 @@ function createFeedbackRow(feedback) {
 }
 
 
-// Function to delete feedback
 function deleteFeedback(event) {
     const feedbackId = event.target.dataset.id;
 
@@ -495,16 +494,18 @@ function deleteFeedback(event) {
     .then(response => {
         if (!response.ok) {
             return response.json().then(error => {
+                console.log('Server Error Response:', error);
                 throw new Error(`HTTP error! Status: ${response.status}, Message: ${error.error}`);
             });
         }
         return response.json();
     })
     .then(data => {
-        if (data.success) {
+        console.log('Delete Feedback Response:', data);
+        if (data.message === 'feedback deleted successfully') {
             const row = event.target.closest('tr');
             alert(`Feedback with ID ${feedbackId} has been deleted.`);
-            row.remove(); // Remove the row only after successful deletion
+            row.remove(); 
             console.log(`Feedback with ID ${feedbackId} has been deleted.`);
         } else {
             alert('Failed to delete feedback');
@@ -516,6 +517,7 @@ function deleteFeedback(event) {
         alert('Error deleting feedback. Please try again.');
     });
 }
+
 
 
 

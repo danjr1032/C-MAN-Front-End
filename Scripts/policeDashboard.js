@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const addCriminalLink = document.getElementById("add-criminal");
     const viewCriminalsLink = document.getElementById("view-criminals");
     const logoutLink = document.getElementById("logout");
-
     const defaultSection = document.querySelector(".default");
     const viewComplaintsSection = document.getElementById("view-complaints-section");
     const addMissingPersonSection = document.getElementById("add-missing-person-section");
@@ -185,9 +184,9 @@ function openUpdatePopup(event) {
         .catch(error => {
             console.error("Error fetching complaint details:", error);
         });
+        // closeUpdatePopup();
 }
 
-closeUpdatePopup();
 
 // Function to close the update popup
 function closeUpdatePopup() {

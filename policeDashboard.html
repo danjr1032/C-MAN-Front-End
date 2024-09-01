@@ -69,7 +69,7 @@
 <!-- Popup form for updating complaint -->
 <div id="update-popup" style="display:none;">
     <div id="update-form" style="padding: 20px; background: #fff; border: 1px solid #ccc; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); z-index: 1000;">
-        <h2>Update Complaint</h2>
+        <h1>Update Complaint</h1>
         <form id="update-complaint-form">
             <label for="status">Status:</label>
             <select id="status" name="status">
@@ -83,7 +83,7 @@
             <br>
             <input type="hidden" id="complaintId">
             <button type="submit">Update</button>
-            <button type="button" onclick="closeUpdatePopup()">Cancel</button>
+            <!-- <button type="button" onclick="closeUpdatePopup()">Cancel</button> -->
         </form>
     </div>
     <!-- Optional: Overlay to close popup on click outside -->
