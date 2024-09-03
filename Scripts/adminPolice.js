@@ -52,9 +52,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Handle successful login
                 alert("Login successful!");
                 if (userType === "admin") {
-                    window.location.href = "https://c-man-front-end.vercel.app/adminDashboard.html";
+                    window.location.href = "adminDashboard.html";
                 } else if (userType === "police") {
-                    window.location.href = "https://c-man-front-end.vercel.app/policeDashboard.html";
+                    window.location.href = "policeDashboard.html";
                 }
             } else {
                 // Handle login failure
