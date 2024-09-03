@@ -56,11 +56,17 @@
         <div id="profile-section" class="section" style="display: none;">
             <h2>Profile</h2>
             <form id="profile-form" action="" method="put">
+                <label for="">FullName:</label>
                 <input type="text" id="name" placeholder="Full Name" required>
+                <label for="">Phone:</label>
                 <input type="tel" placeholder="Phone" required>
+                <label for="">Email:</label>
                 <input type="email" placeholder="Email" required>
+                <label for="">Address:</label>
                 <input type="text" placeholder="Address" required>
+                <label for="">Street:</label>
                 <input type="text" placeholder="Street" required>
+                <label for="">State:</label>
                 <input type="text" placeholder="State" required>
                 <button type="submit">Update Profile</button>
             </form>
@@ -70,6 +76,7 @@
         <div id="report-crime-section" class="section" style="display: none;">
             <h2>Report Crime</h2>
             <form id="report-crime-form" action="" method="post">
+                <label for="">Crime:</label> <br>
                 <select required id="crime" name="crime">
                     <option value="" disabled selected>Select Crime Type</option>
                     <option value="Robbery">Robbery</option>
@@ -78,8 +85,11 @@
                     <option value="Cybercrime">Cybercrime</option>
                     <option value="Kidnapping">Kidnapping</option>
                 </select>
+                <label for="">Location:</label>
                 <input type="text" id="location" name="location" placeholder="Location" required>
+                <label for="">Description:</label> <br>
                 <textarea placeholder="Description" id="description" name="description" required></textarea>
+                <label for="">Evidence:</label>
                 <input type="file" id="evidence" name="evidence" accept="image/*" required>
                 <button type="submit">Submit Report</button>
             </form>

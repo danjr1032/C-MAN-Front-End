@@ -94,10 +94,15 @@
         <div id="add-missing-person-section" class="section">
             <h1>Add Missing Person</h1>
             <form id="add-missing-person-form" action="javascript:void(0);">
+                <label for="">Fullname:</label>
                 <input type="text" id="fullname" placeholder="FullName" required>
+                <label for="">Gender:</label>
                 <input type="text" id="gender" placeholder="Gender Initail should be in Caps lock" required>
+                <label for="">Age:</label>
                 <input type="number" id="age" placeholder="Age" required>
+                <label for="">Description:</label>
                 <textarea id="description" placeholder="Description" required></textarea>
+                <label for="">Photo:</label>
                 <input type="file" id="image" accept="image/*" required>
                 <button type="submit">Add Missing Person</button>
             </form>
@@ -123,30 +128,44 @@
         <div id="add-criminal-section" class="section">
             <h1>Add Criminal</h1>
             <form id="add-criminal-form" action="http://localhost:7000/police/addCriminal" method="post">
+                <label for="">Photo:</label>
                 <input type="file" id="image" name="image" accept="image/*" placeholder="Image" required>
+                <label for="">Fullname:</label>
                 <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+                <label for="">DOB:</label>
                 <input type="date" id="DOB" name="DOB" placeholder="Date of Birth" required>
+                <label for="">Gender:</label>
                 <input type="text" id="gender" name="gender" placeholder="Gender" required>
+                <label for="">Occupation:</label>
                 <input type="text" id="occupation" name="occupation" placeholder="Occupation" required>
                 
                 <!-- Marital Status dropdown -->
+                <label for="">Marital Status:</label>
                 <select id="maritalStatus" name="maritalStatus" required>
                     <option value="">Select Marital Status</option>
                     <option value="Single">Single</option>
                     <option value="Married">Married</option>
                     <option value="Divorced">Divorced</option>
                 </select>
-                
+                <label for="">Weight:</label>
                 <input type="number" id="weight" name="weight" placeholder="Weight (kg)" required>
+                <label for="">Height:</label>
                 <input type="number" id="height" name="height" placeholder="Height (cm)" required>
+                <label for="">Blood Group:</label>
                 <input type="text" id="bloodGroup" name="bloodGroup" placeholder="Blood Group" required>
+                <label for="">Eye Color:</label>
                 <input type="text" id="eyeColor" name="eyeColor" placeholder="Eye Color" required>
+                <label for="">Address:</label>
                 <input type="text" id="address" name="address" placeholder="Address" required>
+                <label for="">LGA:</label>
                 <input type="text" id="localGovernment" name="localGovernment" placeholder="Local Government" required>
+                <label for="">State:</label>
                 <input type="text" id="state" name="state" placeholder="State" required>
+                <label for="">Nationality:</label>
                 <input type="text" id="nationality" name="nationality" placeholder="Nationality" required>
                 
                 <!-- Crime dropdown -->
+                <label for="">Crime:</label>
                 <select id="crime" name="crime" required>
                     <option value="">Select Crime</option>
                     <option value="Robbery">Robbery</option>
@@ -155,17 +174,20 @@
                     <option value="Cybercrime">Cybercrime</option>
                     <option value="Kidnapping">Kidnapping</option>
                 </select>
-                
+                <label for="">contact Fullname:</label>
                 <input type="text" id="contactFullname" name="contactFullname" placeholder="Contact Full Name" required>
+                <label for="">Contact Number:</label>
                 <input type="tel" id="contactNumber" name="contactNumber" placeholder="Contact Number" required>
+                <label for="">Contact Address:</label>
                 <input type="text" id="contactAddress" name="contactAddress" placeholder="Contact Address" required>
+                <label for="">Contact Relationship:</label>
                 <input type="text" id="contactRelationship" name="contactRelationship" placeholder="Contact Relationship" required>
-                <label for="">DateCommitted</label>
+                <label for="">Date Committed:</label>
                 <input type="date" id="dateCommitted" name="dateCommitted" placeholder="Date Committed" required>
                 
-                <label for="">DateConvicted</label>
+                <label for="">Date Convicted:</label>
                 <input type="date" id="dateConvicted" name="dateConvicted" placeholder="Date Convicted" required>
-                
+                <label for="">Sentence:</label>
                 <textarea id="sentence" name="sentence" placeholder="Sentence" required></textarea>
                 <button type="submit">Add Criminal</button>
             </form>

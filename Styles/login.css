@@ -26,13 +26,14 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.login-form {
+/* .login-form {
     text-align: center;
-}
+} */
 
-.login-form h2 {
+.login-form h2, p, a, h1{
     margin-bottom: 20px;
     color: #2c3e50;
+    text-align: center;
 }
 
 .login-form input {

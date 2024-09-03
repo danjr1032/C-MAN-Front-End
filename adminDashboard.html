@@ -91,16 +91,28 @@
         <div id="add-police-section" class="section" style="display: none;">
             <h2>Add Police</h2>
             <form id="add-police-form" enctype="multipart/form-data">
-                <input type="text" name="fullname" placeholder="Full Name" required>
-                <input type="tel" name="phone" placeholder="Phone" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="text" name="rank" placeholder="Rank" required>
-                <input type="text" name="bloodGroup" placeholder="Blood Group" required>
-                <input type="date" name="DOB" placeholder="Date of Birth" required>
-                <input type="text" name="nextOfKin" placeholder="Next of Kin" required>
-                <input type="text" name="badgeNumber" placeholder="Badge Number" required>
-                <input type="password" name="password" placeholder="Password" required>
+                <label for="">Photo:</label>
                 <input type="file" name="image" accept="image/*" required>
+                <label for="">Fullname:</label>
+                <input type="text" name="fullname" placeholder="Full Name" required>
+                <label for="">DOB:</label>
+                <input type="date" name="DOB" placeholder="Date of Birth" required>
+                <label for="">Phone:</label>
+                <input type="tel" name="phone" placeholder="Phone" required>
+                <label for="">Gender:</label>
+                <input type="text" name="gender" placeholder="Gender" required>
+                <label for="">Email:</label>
+                <input type="email" name="email" placeholder="Email" required>
+                <label for="">Badge Number:</label>
+                <input type="text" name="badgeNumber" placeholder="Badge Number" required>
+                <label for="">Rank:</label>
+                <input type="text" name="rank" placeholder="Rank" required>
+                <label for="">Blood Group:</label>
+                <input type="text" name="bloodGroup" placeholder="Blood Group" required>
+                <label for="">Next of Kin:</label>
+                <input type="text" name="nextOfKin" placeholder="Next of Kin" required>
+                <label for="">Password:</label>
+                <input type="password" name="password" placeholder="Password" required>
                 <button type="submit">Add Police</button>
               </form>
         </div>
@@ -127,8 +139,11 @@
         <div id="add-news-section" class="section" style="display: none;">
             <h2>Add News</h2>
             <form id="add-news-form">
+                <label for="">Headline:</label>
                 <input type="text" id="headline" name="headline" placeholder="Headline" required>
+                <label for="">Photo:</label>
                 <input type="file" id="image" name="image" accept="image/*" required>
+                <label for="">Content:</label>
                 <textarea id="content" name="content" placeholder="Content" required></textarea>
                 <button type="submit">Add News</button>
             </form>
