@@ -277,8 +277,8 @@ function updateComplaintRow(complaintId, status, progressReport) {
 // Function to delete a complaint
 function deleteMissing(event) {
     const missingId = event.target.dataset.id;
-    // fetch(`https://c-man-api.onrender.com/police/missing/${missingId}`, {
-    fetch(`http://localhost:7000/police/missing/${missingId}`, {
+    fetch(`https://c-man-api.onrender.com/police/missing/${missingId}`, {
+    // fetch(`http://localhost:7000/police/missing/${missingId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
