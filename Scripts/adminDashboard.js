@@ -278,6 +278,7 @@ function deletePolice(event) {
             console.log(`Police with ID ${policeId} has been deleted.`);
         } else {
             alert(`Police with ID ${policeId} has been deleted.`);
+            const row = event.target.closest("tr");
             row.remove();
             // alert('Failed to delete police officer.');
             console.error("Failed to delete police officer:", data.error || data.message || "Unknown error");

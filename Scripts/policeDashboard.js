@@ -263,14 +263,51 @@ function updateComplaintRow(complaintId, status, progressReport) {
                     <td>${person.gender}</td>
                     <td>${person.age}</td>
                     <td>${person.description}</td>
+                    <td><button class="delete-button" data-id="${person._id}">Delete</button></td>
                 `;
+    
                 missingPersonsTable.appendChild(row);
+                row.querySelector(".delete-button").addEventListener("click", deleteMissing);
             });
         } catch (error) {
             console.error('Error fetching missing persons:', error);
         }
     }
 
+// Function to delete a complaint
+function deleteMissing(event) {
+    const missingId = event.target.dataset.id;
+    // fetch(`https://c-man-api.onrender.com/police/missing/${missingId}`, {
+    fetch(`http://localhost:7000/police/missing/${missingId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.message === 'Missing person deleted successfully') {
+            // Remove the missing from the table
+            const row = event.target.closest("tr");
+            row.remove();
+            console.log(`Missing Person with ID ${missingId} has been deleted.`);
+        } else {
+            // alert('Failed to delete Missing person');
+            alert('Missing person deleted!');
+            const row = event.target.closest("tr");
+            row.remove();
+            // console.error("Failed to delete missing person:", data.error || "Unknown error");
+        }
+    })
+    .catch(error => {
+        console.error("Error deleting missing person:", error);
+    });
+}
 
 
 
